@@ -1,0 +1,88 @@
+$main-purple: #bc13fe;
+$yellow: rgb(207, 255, 4);
+$cubic-bezier: cubic-bezier(0.19, 1, 0.22, 1);
+
+@font-face {
+	font-family: 'Icomoon';
+	src: url('../fonts/IcoMoon-Free.ttf');
+}
+
+@-webkit-keyframes linkAnimation{
+	0%{
+		background-position:right bottom;
+		background-size:100% .1rem;
+	}
+	50%{
+		background-position:right bottom;
+		background-size:0% .1rem;
+	}
+	51%{
+		background-position:left bottom;
+		background-size:0% .1rem;
+	}
+	100%{
+		background-position:left bottom;
+		background-size:100% .1rem;
+	}
+}
+
+@-moz-keyframes linkAnimation{
+	0%{
+		background-position:right bottom;
+		background-size:100% .1rem;
+	}
+	50%{
+		background-position:right bottom;
+		background-size:0% .1rem;
+	}
+	51%{
+		background-position:left bottom;
+		background-size:0% .1rem;
+	}
+	100%{
+		background-position:left bottom;
+		background-size:100% .1rem;
+	}
+}
+
+@-ms-keyframes linkAnimation{
+	0%{
+		background-position:right bottom;
+		background-size:100% .1rem;
+	}
+	50%{
+		background-position:right bottom;
+		background-size:0% .1rem;
+	}
+	51%{
+		background-position:left bottom;
+		background-size:0% .1rem;
+	}
+	100%{
+		background-position:left bottom;
+		background-size:100% .1rem;
+	}
+}
+
+@keyframes linkAnimation{
+	0%{
+		background-position:right bottom;
+		background-size:100% .1rem;
+		background-image: linear-gradient($main-purple, $main-purple);
+	}
+	50%{
+		background-position:right bottom;
+		background-size:0% .1rem;
+		background-image: linear-gradient($main-purple, $yellow);
+	}
+	51%{
+		background-position:left bottom;
+		background-size:0% .1rem;
+		background-image: linear-gradient($main-purple, $yellow);
+	}
+	100%{
+		background-position:left bottom;
+		background-size:100% .1rem;
+		background-image: linear-gradient($yellow, $yellow);
+	}
+}
