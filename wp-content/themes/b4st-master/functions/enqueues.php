@@ -39,6 +39,9 @@ function b4st_enqueues() {
 	wp_register_script('b4st-js', get_template_directory_uri() . '/theme/js/b4st.js', false, null, true);
 	wp_enqueue_script('b4st-js');
 	
+	wp_register_script('particles', get_template_directory_uri() . '/theme/js/particles.js', false, null, true);
+	wp_enqueue_script('particles');
+	
 	wp_register_script('app', get_template_directory_uri() . '/theme/js/app.js', false, null, true);
 	wp_enqueue_script('app');
 

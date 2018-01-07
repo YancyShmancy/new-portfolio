@@ -5,5 +5,6 @@ app.home = {
         }
         TweenMax.staggerTo('#home-heading h1 span', 0.2, {opacity: 1, y: 0}, 0.1);
         TweenMax.staggerTo('#home-heading nav li', 0.2, {opacity: 1, y: 0}, 0.1);
+        TweenLite.to('#home-heading .home-logo img', 1, {opacity: 1, y: 0});
     }
 }

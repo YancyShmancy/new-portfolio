@@ -1,10 +1,14 @@
 @import "partials/variables";
+@import "partials/icomoon";
 
 *{
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
+html #wpadminbar {
+	display: none;
+}
 html, body{
     height: 100%;
     margin: 0;
@@ -16,7 +20,6 @@ html, body{
 
 body {
 	height: 100vh;
-	// overflow-y: scroll;
 }
 
 canvas {
@@ -24,6 +27,14 @@ canvas {
     position: absolute;
     left: 0;
     top: 0;
+}
+
+#particles-js {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
 
 a.btn.outline {
@@ -43,7 +54,7 @@ a.btn.outline {
 p a {
 	font-size: 0.9em;
 	color: #777;
-	padding-bottom: 5px;
+	padding-bottom: 2px;
 	text-decoration: none;
 	background-image: -webkit-linear-gradient(#777, #777);
 	background-image: linear-gradient(#777, #777);
@@ -75,6 +86,64 @@ p {
 	}
 }
 
+.container.skills {
+	padding-bottom: 45px;
+	margin-top: 50px;
+	
+	h2 {
+		margin-bottom: 0px;
+		color: #777;
+	}
+	
+	small {
+		color: $main-purple;
+		margin-bottom: 15px;
+		display: block;
+	}
+	
+	ul {
+		list-style-type: none;
+		padding-left: 0px;
+		margin-bottom: 20px;
+		
+		li {
+			color: #bbb;
+		}
+	}
+	
+	h4 {
+		color: #777;
+		margin-bottom: 0;
+		margin-top: 5px;
+	}
+	
+	progress {
+		width: 100%;
+		-webkit-appearance: none;
+	   	appearance: none;
+	  	height: 7px;
+	  	position: relative;
+	  	
+	  	&::after {
+	  		content: attr('value');
+	  		position: absolute;
+	  		left: 50%;
+	  		top: 50%;
+	  		transform: translateX(-50%, -50%);
+	  	}
+	}
+	
+	progress[value]::-webkit-progress-bar {
+		background-color: #eee;
+		border-radius: 2px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+	
+	progress[value]::-webkit-progress-value {
+		background-color: $main-purple;
+	}
+}
+
 #sidebar-nav {
 	
 	ul {
@@ -85,6 +154,10 @@ p {
 			position: relative;
 			opacity: 0;
 			transform: translateY(-10px);
+			
+			@include breakpoint(upToLaptop) {
+				width: 50px;
+			}
 			
 			&:nth-of-type(1) {
 				a::after {
@@ -119,10 +192,11 @@ p {
 			a {
 				display: block;
 				color: #eee;
-				transition: 0.2s background ease-out;
+				transition: 0.2s all ease-out;
 				min-height: 50px;
 				font-size: 0.7em;
 				text-transform: uppercase;
+				opacity: 0.7;
 				
 				&::after {
 					font-family: 'Icomoon';
@@ -149,26 +223,28 @@ p {
 					// background: $yellow;
 					color: white;
 					text-decoration: none;
+					opacity: 1;
 					
 					&::after {
-						color: $yellow;
-						opacity: 0.4;
-					}
-					
-					span {
-						position: relative;
-						z-index: 9;
+						color: $main-purple;
 						opacity: 1;
 					}
+					
+					// span {
+					// 	position: relative;
+					// 	z-index: 9;
+					// 	opacity: 1;
+					// }
 				}
 				
 				&:hover {
 					// background: $yellow;
 					color: white;
 					text-decoration: none;
+					opacity: 1;
 					
 					&::after {
-						color: $yellow;
+						color: $main-purple;
 						opacity: 0.4;
 					}
 					
@@ -184,7 +260,7 @@ p {
 }
 
 h1 {
-	font-size: 4em;
+	font-size: 3em;
 	font-weight: 400;
 	color: #eee;
 	letter-spacing: -1px;
@@ -209,6 +285,12 @@ h5 {
 	padding-left: 60px;
 	height: 100vh;
 	overflow-y: scroll;
+	padding-bottom: 100px;
+	
+	@include breakpoint(upToLaptop) {
+		padding-left: 0px;
+		padding-top: 60px;
+	}
 }
 
 article {
@@ -220,6 +302,10 @@ article {
 	color: $main-purple;
 }
 
+.yellow {
+	color: $yellow;
+}
+
 .sidebar {
 	width: 60px;
 	background: #181818;
@@ -229,25 +315,66 @@ article {
 	height: 100vh;
 	z-index: 3;
 	margin-top: 0;
+	
+	@include breakpoint(upToLaptop) {
+		width: 100vw;
+		height: 60px;
+	}
 
 	.logo {
 		width: 60px;
-		height: 100px;
 		display: block;
 		position: relative;
+		background-color: #111;
+		
+		padding: 25px 5px;
+		
+		@include breakpoint(upToLaptop) {
+			position: absolute;
+			left: 0;
+			top: 0;
+			padding: 15px 5px;
+		}
 	}
 	
 	ul {
 		text-align: center;
+		@include breakpoint(upToLaptop) {
+			margin-bottom: 0;
+		}
+		
+	}
+	
+	.social-icons {
+		@include breakpoint(upToLaptop) {
+		    position: absolute;
+		    width: 200px;
+		    right: 0;
+		    top: 0;
+		    height: 60px;
+		}
 	}
 
 	.social-list {
 		width: 100%;
 		bottom: 0;
 		left: 0;
-		padding-bottom: 20px;
+		padding-bottom: 10px;
+		
+		@include breakpoint(bigMobile) {
+			display: none;
+		}
+		@include breakpoint(upToLaptop) {
+			padding-top: 7px;
+			// position: absolute;
+			// right: 0;
+		}
 
 		li {
+			@include breakpoint(upToLaptop) {
+				display: inline-block;
+				width: 25px;
+			}
 			display: block;
 			width: 100%;
 			text-align: center;
@@ -258,7 +385,7 @@ article {
 				transition: 0.2s color ease;
 
 				i {
-					font-size: 1.5em;
+					font-size: 1em;
 					transition: 0.2s transform ease;
 				}
 
@@ -292,6 +419,13 @@ article {
 		
 		a.btn.outline {
 			margin-top: 20px;
+		}
+	}
+	
+	.home-logo {
+		img {
+			opacity: 0;
+			transform: translateY(-20px);
 		}
 	}
 	nav {
@@ -399,6 +533,21 @@ article {
 		text-decoration: none;
 		overflow: hidden;
 		
+		span.student-title {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			padding: 3px 0;
+			text-align: center;
+			background-color: $main-purple;
+			color: white;
+			left: 0;
+		}
+		
+		.inner {
+			width: 100%;
+		}
+		
 		&:hover {
 			
 			h1::before,
@@ -422,6 +571,10 @@ article {
 		h1 {
 			position: relative;
 			padding: 15px 0;
+			
+			@include breakpoint(phablet) {
+				font-size: 1.5em;
+			}
 			
 			&::before,
 			&::after {
@@ -473,10 +626,28 @@ article {
 	}
 }
 
-.container.skills {
-	margin-top: 50px;
+.skills-container {
+	background: rgba(255,255,255,0.2);
+	padding: 30px 0;
+	position: relative;
+	
+	.single-skill {
+		margin: 15px 0;
+	}
 }
 
 .container.contact {
 	margin-top: 50px;
+	
+	.nf-form-title {
+		display: none;
+	}
+	
+	input,
+	textarea {
+		background: #777;
+		border: 1px solid transparent;
+		border-bottom: 2px solid #eee;
+		color: #eee;
+	}
 }

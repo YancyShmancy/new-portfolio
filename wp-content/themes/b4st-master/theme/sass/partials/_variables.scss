@@ -1,10 +1,43 @@
 $main-purple: #bc13fe;
-$yellow: rgb(207, 255, 4);
+$yellow: #cfff04;
 $cubic-bezier: cubic-bezier(0.19, 1, 0.22, 1);
 
 @font-face {
 	font-family: 'Icomoon';
 	src: url('../fonts/IcoMoon-Free.ttf');
+}
+
+@mixin breakpoint($point) {
+    @if $point == upToBigScreen {
+        @media (max-width: 1350px) { @content ; }
+    }
+    @else if $point == desktop {
+        @media (min-width: 1200px) { @content ; }
+    }
+    @else if $point == upToDesktop {
+        @media (max-width: 1199px) { @content ; }
+    }
+    @else if $point == laptopPlus {
+        @media (max-width: 1040px) { @content ; }
+    }
+    @else if $point == laptop {
+        @media (min-width: 992px) { @content ; }
+    }
+    @else if $point == upToLaptop {
+        @media (max-width: 991px) { @content; }
+    }
+    @else if $point == tablet {
+        @media (min-width: 768px) { @content ; }
+    }
+    @else if $point == phablet {
+        @media (max-width: 767px)  { @content ; }
+    }
+    @else if $point == bigMobile {
+        @media (max-width: 640px) { @content ; }
+    }
+    @else if $point == mobileonly {
+        @media (max-width: 480px)  { @content ; }
+    }
 }
 
 @-webkit-keyframes linkAnimation{

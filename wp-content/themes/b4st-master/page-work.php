@@ -11,13 +11,16 @@
             
             if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
             ?>
-                <a href="<?php the_permalink(); ?>" class="col-12 full-width portfolio-item">
+                <a href="<?php the_permalink(); ?>" class="col-12 col-lg-6 portfolio-item">
                     <div class="item_bg" style="background: url('<?php echo get_the_post_thumbnail_url(); ?>') no-repeat center center; background-size: cover;"></div>
                     <div class="inner">
                         <div class="item_text col-md-8 offset-md-2">
                             <h1 align="center" class="item_title"><?php the_title(); ?></h1>
                         </div>
                     </div>
+                    <?php if (get_field('student_work')) : ?>
+                        <span class="student-title">STUDENT WORK</span>
+                    <?php endif; ?>
                 </a>
             <?php endwhile; endif; ?>
         
@@ -37,13 +40,16 @@
         
         if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
         ?>
-            <a data-hover="<?php the_title(); ?>" href="<?php the_permalink(); ?>" class="col-12 full-width portfolio-item" style="padding-left: 0;">
+            <a href="<?php the_permalink(); ?>" class="col-12 col-lg-6 portfolio-item" style="padding-left: 0;">
                 <div class="item_bg" style="background: url('<?php echo get_the_post_thumbnail_url(); ?>') no-repeat center center; background-size: cover;"></div>
                 <div class="inner">
                     <div class="item_text col-md-8 offset-md-2">
                         <h1 align="center" class="item_title"><?php the_title(); ?></h1>
                     </div>
                 </div>
+                <?php if (get_field('student_work')) : ?>
+                    <span class="student-title">STUDENT WORK</span>
+                <?php endif; ?>
             </a>
         <?php endwhile; endif; ?>
         
